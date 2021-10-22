@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 export function SendMessageForm() {
   const [message, setMessage] = useState('');
 
-  const { user } = useContext(AuthContext);
+  const { user, signOut } = useContext(AuthContext);
 
   async function handleSendMessage(event: FormEvent) {
     event.preventDefault();
@@ -21,7 +21,10 @@ export function SendMessageForm() {
 
   return (
     <div className={styles.sendMessageFormWrapper}>
-      <button className={styles.signOutButton}>
+      <button
+        className={styles.signOutButton}
+        onClick={signOut}
+      >
         <VscSignOut size="32" />
       </button>
 
