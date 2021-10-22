@@ -1,4 +1,10 @@
-import React, { createContext, ReactNode, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState
+} from 'react';
 import { api } from '../services/api';
 
 type User = {
@@ -88,3 +94,5 @@ export function AuthProvider(props: AuthProvider) {
     </AuthContext.Provider>
   );
 }
+
+export const useAuth = () => useContext(AuthContext);
