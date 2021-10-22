@@ -26,6 +26,21 @@ export function MessageList() {
   const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
+    setInterval(() => {
+      if (messagesQueue.length > 0) {
+        setMessages(prevState => [
+          messagesQueue[0],
+          prevState[0],
+          prevState[1],
+        ].filter(Boolean));
+
+        //remove oldest message from queue after execute setmessages
+        messagesQueue.shift();
+      }
+    }, 3000);
+  }, []);
+
+  useEffect(() => {
     api.get<Message[]>('/messages/3-most-recent').then(response => {
       setMessages(response.data);
     });
