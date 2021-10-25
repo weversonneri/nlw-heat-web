@@ -4,6 +4,8 @@ import { useAuth } from '../../context/auth';
 import { api } from '../../services/api';
 import styles from './styles.module.scss';
 
+import { toast } from 'react-toastify';
+
 export function SendMessageForm() {
   const [message, setMessage] = useState('');
 
@@ -12,11 +14,20 @@ export function SendMessageForm() {
   async function handleSendMessage(event: FormEvent) {
     event.preventDefault();
 
-    if (!message.trim) return;
+    const formattedMessage = message.trim();
 
-    await api.post('/messages', { message });
+    if (!formattedMessage) {
+      toast.warning('O campo de mensagem está vazio. 🤔');
+      return;
+    }
 
-    setMessage('');
+    try {
+      await api.post('/messages', { message });
+      toast.success('Sua mensagem foi enviada! 🎉');
+      setMessage('');
+    } catch (err) {
+      toast.error('Não foi possivel enviar sua mensagem. 😥');
+    }
   }
 
   return (
