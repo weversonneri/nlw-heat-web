@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useState
 } from 'react';
+import { CLIENT_ID, TOKEN_STORAGE } from '../configs/env';
 import { api } from '../services/api';
 
 type User = {
@@ -24,7 +25,6 @@ type AuthProvider = {
   children: ReactNode;
 }
 
-
 type AuthResponse = {
   token: string,
   user: {
@@ -40,7 +40,7 @@ export const AuthContext = createContext({} as AuthContextData);
 export function AuthProvider(props: AuthProvider) {
   const [user, setUser] = useState<User | null>(null);
 
-  const signInUrl = 'https://github.com/login/oauth/authorize?scope=user&client_id=b5645618483d873bf3cb';
+  const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=${CLIENT_ID}`;
 
   async function signIn(githubCode: string) {
     const response = await api.post<AuthResponse>('/authenticate', {
@@ -49,7 +49,7 @@ export function AuthProvider(props: AuthProvider) {
 
     const { token, user } = response.data;
 
-    localStorage.setItem('@NLW-Heat:token', token);
+    localStorage.setItem(TOKEN_STORAGE, token);
 
     api.defaults.headers.common.authorization = `Bearer ${token}`;
 
@@ -58,11 +58,11 @@ export function AuthProvider(props: AuthProvider) {
 
   function signOut() {
     setUser(null);
-    localStorage.removeItem('@NLW-Heat:token');
+    localStorage.removeItem(TOKEN_STORAGE);
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('@NLW-Heat:token');
+    const token = localStorage.getItem(TOKEN_STORAGE);
 
     if (token) {
       api.defaults.headers.common.authorization = `Bearer ${token}`;
