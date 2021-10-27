@@ -1,5 +1,6 @@
 import styles from './styles.module.scss';
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export type MessageProps = {
   id: string,
@@ -16,7 +17,10 @@ type Props = {
 
 export function Message({ data }: Props) {
   return (
-    <li
+    <motion.li
+      initial={{ opacity: 0, translateY: -50 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      transition={{ duration: 1 }}
       className={styles.message}>
       <p className={styles.messageContent}>
         {data.text}
@@ -27,6 +31,6 @@ export function Message({ data }: Props) {
         </div>
         <span>{data.user.name}</span>
       </div>
-    </li>
+    </motion.li>
   );
 }

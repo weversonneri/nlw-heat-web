@@ -5,6 +5,7 @@ import { api } from '../../services/api';
 import styles from './styles.module.scss';
 
 import { toast } from 'react-toastify';
+import { motion } from 'framer-motion';
 
 export function SendMessageForm() {
   const [message, setMessage] = useState('');
@@ -32,12 +33,13 @@ export function SendMessageForm() {
 
   return (
     <div className={styles.sendMessageFormWrapper}>
-      <button
+      <motion.button
+        whileHover={{ scale: 1.05 }}
         className={styles.signOutButton}
         onClick={signOut}
       >
         <VscSignOut size="32" />
-      </button>
+      </motion.button>
 
       <header className={styles.userInformation}>
         <div className={styles.userImage}>
@@ -60,9 +62,12 @@ export function SendMessageForm() {
           value={message}
         />
 
-        <button type="submit">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 1 }}
+          type="submit">
           Enviar Mensagem
-        </button>
+        </motion.button>
       </form>
     </div>
   );

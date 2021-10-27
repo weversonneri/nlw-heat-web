@@ -14,7 +14,9 @@ export function App() {
     <main className={`${styles.contentWrapper} ${!!user ? styles.contentSigned : ''}`}>
       <MessageList />
       {!!user ? <SendMessageForm /> : <LoginBox />}
-      <ToastContainer />
+      <ToastContainer
+        theme='colored'
+      />
     </main>
   );
 }
