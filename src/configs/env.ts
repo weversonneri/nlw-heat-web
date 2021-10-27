@@ -1,4 +1,4 @@
-const CLIENT_ID = 'b5645618483d873bf3cb';
+const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
 const TOKEN_STORAGE = '@NLW-Heat:token';
 
 export {

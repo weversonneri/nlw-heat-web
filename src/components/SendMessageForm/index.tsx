@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 
 export function SendMessageForm() {
   const [message, setMessage] = useState('');
+  const [isSendingMessage, setIsSendingMessage] = useState(false);
 
   const { user, signOut } = useAuth();
 
@@ -21,11 +22,12 @@ export function SendMessageForm() {
       toast.warning('O campo de mensagem está vazio. 🤔');
       return;
     }
-
+    setIsSendingMessage(true);
     try {
       await api.post('/messages', { message });
       toast.success('Sua mensagem foi enviada! 🎉');
       setMessage('');
+      setIsSendingMessage(false);
     } catch (err) {
       toast.error('Não foi possivel enviar sua mensagem. 😥');
     }
@@ -66,7 +68,9 @@ export function SendMessageForm() {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 1 }}
-          type="submit">
+          type="submit"
+          disabled={isSendingMessage}
+        >
           Enviar Mensagem
         </motion.button>
       </form>

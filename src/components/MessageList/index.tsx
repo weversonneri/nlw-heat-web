@@ -8,7 +8,7 @@ import { Message, MessageProps } from '../Message';
 
 const messagesQueue: MessageProps[] = [];
 
-const socket = io('http://localhost:4000');
+const socket = io(import.meta.env.VITE_BASE_URL as string);
 
 socket.on('new_message', (newMessage: MessageProps) => {
   messagesQueue.push(newMessage);
