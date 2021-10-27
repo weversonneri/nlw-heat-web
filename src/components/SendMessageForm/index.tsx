@@ -35,6 +35,7 @@ export function SendMessageForm() {
     <div className={styles.sendMessageFormWrapper}>
       <motion.button
         whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 1 }}
         className={styles.signOutButton}
         onClick={signOut}
       >
