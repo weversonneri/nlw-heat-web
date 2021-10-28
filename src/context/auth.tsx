@@ -19,6 +19,7 @@ type AuthContextData = {
   user: User | null;
   signInUrl: string;
   signOut: () => void;
+  loading: boolean
 }
 
 type AuthProvider = {
@@ -39,10 +40,13 @@ export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthProvider(props: AuthProvider) {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=${CLIENT_ID}`;
 
   async function signIn(githubCode: string) {
+    setLoading(true);
+
     const response = await api.post<AuthResponse>('/authenticate', {
       code: githubCode,
     });
@@ -54,6 +58,7 @@ export function AuthProvider(props: AuthProvider) {
     api.defaults.headers.common.authorization = `Bearer ${token}`;
 
     setUser(user);
+    setLoading(false);
   }
 
   function signOut() {
@@ -89,7 +94,7 @@ export function AuthProvider(props: AuthProvider) {
 
 
   return (
-    <AuthContext.Provider value={{ signInUrl, user, signOut }}>
+    <AuthContext.Provider value={{ signInUrl, user, signOut, loading }}>
       {props.children}
     </AuthContext.Provider>
   );

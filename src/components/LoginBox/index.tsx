@@ -5,7 +5,7 @@ import { useAuth } from '../../context/auth';
 import styles from './styles.module.scss';
 
 export function LoginBox() {
-  const { signInUrl } = useAuth();
+  const { signInUrl, loading } = useAuth();
 
   return (
     <div className={styles.loginBoxWrapper}>
@@ -15,7 +15,7 @@ export function LoginBox() {
         whileTap={{ scale: 1 }}
         href={signInUrl} className={styles.signInWithGithub}>
         <VscGithubInverted size="24" />
-        Entrar com Github
+        {loading ? 'Carregando...' : 'Entrar com Github'}
       </motion.a>
     </div>
   );

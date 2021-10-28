@@ -71,7 +71,7 @@ export function SendMessageForm() {
           type="submit"
           disabled={isSendingMessage}
         >
-          Enviar Mensagem
+          {isSendingMessage ? 'Enviando...' : 'Enviar Mensagem'}
         </motion.button>
       </form>
     </div>
