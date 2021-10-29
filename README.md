@@ -7,11 +7,11 @@
 
 <p align="center">
   <a href="#-sobre-o-projeto">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-funcionalidades">Funcionalidades</a>
+  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-tecnologias">Tecnologias</a>
   &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-tecnologias-utilizadas">Funcionalidades</a>
-  &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-como-usar">Como usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-licença">Licença</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#Aprendizados">Aprendizados</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -20,6 +20,10 @@
 ## 📃 Sobre o projeto
 A setima edição do [NLW](https://nextlevelweek.com) promovido pela **[@RocketSeat](https://www.rocketseat.com.br/)** serviu como aquecimento para o **[DoWhile 2021](https://dowhile.io/inscricao)**, então nada melhor que o tema do projeto fosse nesse sentido. 
 O objetivo é o desenvolvimento de uma aplicação fullstack que permita os usuarios compartilharem suas expectativas para o evento, utilizando as tecnologias mais atuais do mercado. Aqui se encontra o front-end web da nossa aplicação utilizando ReactJS e autenticação com OAuth do Github.
+
+### Outras etapas do projeto: 
+- [Back-end](https://github.com/weversonneri/nlw-heat-node)
+- [Mobile](https://github.com/weversonneri/nlw-heat-mobile)
 
 <p align="center">
   <img 
